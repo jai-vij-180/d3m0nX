@@ -6,7 +6,8 @@ public class Basics : MonoBehaviour   {
     public GameObject bullet;
     public Transform gunPoint;
     Manager statesManager;
-
+    public Vector2 jumpForce;
+    
     [Range(0.5f, 2.5f)]
     public float speed;
 
@@ -51,6 +52,10 @@ public class Basics : MonoBehaviour   {
             left();
         }
 
+        //jumping
+        if (Input.GetKeyDown(KeyCode.Z))
+            jump();
+
     }
 	
 
@@ -77,7 +82,10 @@ public class Basics : MonoBehaviour   {
             
         }
 
-
+        void jump()
+         {
+            rb.AddForceAtPosition(jumpForce,new Vector2(transform.position.x,transform.position.y),ForceMode2D.Impulse);
+         }
 
     void Shooting_True()
     {
