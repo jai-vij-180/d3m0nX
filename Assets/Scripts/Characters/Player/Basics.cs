@@ -7,7 +7,7 @@ public class Basics : MonoBehaviour   {
     public Transform gunPoint;
     Manager statesManager;
 
-    [Range(0.1f, 0.5f)]
+    [Range(0.5f, 2.5f)]
     public float speed;
 
 
@@ -20,6 +20,9 @@ public class Basics : MonoBehaviour   {
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
+
+        
     }
 
     void Update()
@@ -29,7 +32,7 @@ public class Basics : MonoBehaviour   {
         {
             Shooting_True();
         }
-        
+
     }
 
     void FixedUpdate()
@@ -37,11 +40,14 @@ public class Basics : MonoBehaviour   {
         //walking
         if(Input.GetKey(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
+            transform.localScale = new Vector3(1, 0, 0) ;
+            
             right();
         }
 
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
+            transform.localScale = new Vector3(-1, 0, 0);
             left();
         }
 
@@ -54,6 +60,7 @@ public class Basics : MonoBehaviour   {
         void right()   
         {
 
+			
             Vector2 p = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + 1f, transform.position.y), speed * Time.deltaTime);
             rb.MovePosition(p);
             statesManager.StateChanger(Manager.States.walk, true);
