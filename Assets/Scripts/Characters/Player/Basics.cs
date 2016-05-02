@@ -40,14 +40,14 @@ public class Basics : MonoBehaviour   {
         //walking
         if(Input.GetKey(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
-            transform.localScale = new Vector3(1, 0, 0) ;
+           transform.localScale = new Vector3(1, 1,1) ;
             
             right();
         }
 
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
-            transform.localScale = new Vector3(-1, 0, 0);
+            transform.localScale = new Vector3(-1, 1, 1);
             left();
         }
 
